@@ -1,3 +1,5 @@
+import Link from "next/link";
+import { notFound } from "next/navigation";
 import React from "react";
 
 type Props = {
@@ -7,7 +9,14 @@ type Props = {
 };
 
 export default function PantsPage({ params }: Props) {
-  return <h1>{params.slug} Page</h1>;
+  if (params.slug === "nothing") {
+    notFound();
+  }
+  return (
+    <>
+      <h1>{params.slug} 제품 설명 페이지</h1>
+    </>
+  );
 }
 
 // 동적라우팅에 정적 라우팅 추가하기 ( 가장 많이 사용하는 라우팅을 정정으로 변환)

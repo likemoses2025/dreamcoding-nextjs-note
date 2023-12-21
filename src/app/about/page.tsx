@@ -1,5 +1,5 @@
 import React from "react";
 
 export default function AboutPage() {
-  return <div>어바웃 페이지입니다</div>;
+  return <h1>어바웃 페이지입니다</h1>;
 }
