@@ -5,6 +5,9 @@
   padding: 8px;
   border-bottom: 1px solid #132f52;
 }
+.header a {
+  text-decoration: none;
+}
 
 .nav a {
   padding: 0 8px;

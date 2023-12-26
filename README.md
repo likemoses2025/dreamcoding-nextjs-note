@@ -1,36 +1,34 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# NEXT JS 학습 내용
 
-## Getting Started
+## 5강 렌더링
 
-First, run the development server:
+### 1. Server Component
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+### 2. Client Component
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 3. Fetch
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 4. Rendering
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+### 5. V.12
 
-## Learn More
+### 6. API Routes
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### 1. Server Component
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+**변경점 : 컴포넌트 단위로 렌더링 방식(서버,클라이언트) 규정으로 바뀜**
+**변경점 : app안의 모든 컴포넌트는 기본적으로 서버 컴포넌트**
 
-## Deploy on Vercel
+1. app 폴더안의 모든 컴포넌트는 기본적으로 서버 컴포넌트이다
+2. 서버 컴포넌트는 서버에서 실행된다.
+3. 서버 컴포넌트는 클라이언트에 html형태로 만들어져 전송된다.
+4. 서버 컴포넌트는 서버 노드 api 사용할 수 있다.
+5. 서버의 파일 시스템에 접근해서 CRUD가 가능하다.
+6. 클라이언트 click,useEffect,상태관리 시스템에 접근 불가능
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### 2. Client Component
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+1.  클라인언트 컴포넌트 일 지라도 빌드시 정적으로 만들수 있는 부분은 정정으로 만들고
+    클릭시 일어나는 이벤트는 클라인언트에서 처리한다.
