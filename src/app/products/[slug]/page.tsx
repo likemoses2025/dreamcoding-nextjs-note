@@ -1,3 +1,4 @@
+import { getProduct, getProducts } from "@/service/products";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import React from "react";
@@ -14,20 +15,22 @@ export function generateMetadata({ params }: Props) {
   };
 }
 
-export default function PantsPage({ params }: Props) {
-  if (params.slug === "nothing") {
+export default function PantsPage({ params: { slug } }: Props) {
+  if (slug === "nothing") {
     notFound();
   }
-  return (
-    <>
-      <h1>{params.slug} 제품 설명 페이지</h1>
-    </>
-  );
+  // 서버 파일에 있는 데이터중 해당 제품의 정보를 찾아서 그걸 보여줌
+  const product = getProduct(slug);
+  if (!product) {
+    notFound();
+  }
+  return <h1>{product} 제품 설명 페이지</h1>;
 }
 
 // 동적라우팅에 정적 라우팅 추가하기 ( 가장 많이 사용하는 라우팅을 정정으로 변환)
+// 모든 제품의 페이지를 미리 만들어 둠 (SSG)
 export function generateStaticParams() {
-  const products = ["pants", "skirt"];
+  const products = getProducts();
   return products.map((product) => ({
     slug: product,
   }));
