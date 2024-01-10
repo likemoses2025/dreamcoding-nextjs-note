@@ -1,11 +1,12 @@
 import { getProduct, getProducts } from "@/service/products";
 import Link from "next/link";
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 
 import Jeans from "../../../../public/images/jeans.jpg";
 import Shoes from "../../../../public/images/shoes.jpg";
 import Tshirt from "../../../../public/images/tshirt.jpg";
 import Image from "next/image";
+import GoProductsButton from "@/components/GoProductsButton";
 
 // export const revalidate = 3;
 
@@ -28,7 +29,8 @@ export default async function ProductPage({ params: { slug } }: Props) {
   // 서버 파일에 있는 데이터중 해당 제품의 정보를 찾아서 그걸 보여줌
   const product = await getProduct(slug);
   if (!product) {
-    notFound();
+    // notFound();
+    redirect("/products");
   }
 
   console.log(slug);
@@ -47,6 +49,7 @@ export default async function ProductPage({ params: { slug } }: Props) {
         width={500}
         height={500}
       />
+      <GoProductsButton />
     </>
   );
 }
