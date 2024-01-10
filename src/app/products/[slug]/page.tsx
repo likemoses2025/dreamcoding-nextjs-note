@@ -1,7 +1,11 @@
 import { getProduct, getProducts } from "@/service/products";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import React from "react";
+
+import Jeans from "../../../../public/images/jeans.jpg";
+import Shoes from "../../../../public/images/shoes.jpg";
+import Tshirt from "../../../../public/images/tshirt.jpg";
+import Image from "next/image";
 
 // export const revalidate = 3;
 
@@ -26,7 +30,25 @@ export default async function ProductPage({ params: { slug } }: Props) {
   if (!product) {
     notFound();
   }
-  return <h1>{product.name} 제품 설명 페이지</h1>;
+
+  console.log(slug);
+  return (
+    <>
+      <h1>{product.name} 제품 설명 페이지</h1>
+      <Image
+        src={
+          product.name === "청바지"
+            ? Jeans
+            : product.name === "티셔츠"
+            ? Tshirt
+            : Shoes
+        }
+        alt='detail'
+        width={500}
+        height={500}
+      />
+    </>
+  );
 }
 
 // 동적라우팅에 정적 라우팅 추가하기 ( 가장 많이 사용하는 라우팅을 정정으로 변환)

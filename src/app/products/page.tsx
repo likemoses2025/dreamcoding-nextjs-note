@@ -3,6 +3,8 @@ import React from "react";
 import styles from "./page.module.css";
 import { getProducts } from "@/service/products";
 import MeowArticle from "@/components/MeowArticle";
+import Image from "next/image";
+import clothsImage from "../../../public/images/clothes.jpg";
 
 // export const revalidate = 3;
 
@@ -13,6 +15,7 @@ export default async function ProductsPage() {
   return (
     <>
       <h1>제품 소개 페이지</h1>
+      <Image src={clothsImage} alt='Clothes' priority />
       {products.map((product, index) => (
         <ul key={index}>
           <li>
